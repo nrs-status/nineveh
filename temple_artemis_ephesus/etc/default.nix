@@ -22,11 +22,18 @@ in {
         docker-compose
         d2 #scripting language for diagrams
 
+        tree-sitter
+        ast-grep
+        semgrep
+
         #other terminals for debugging purposes
         alacritty
         xterm
 
         unixtools.xxd #display binary files
+
+        cinny-desktop #chat client
+        kdePackages.konversation #irc client
 
       ];
     };

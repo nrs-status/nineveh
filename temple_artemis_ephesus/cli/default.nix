@@ -33,6 +33,7 @@ in {
         navi #make interactive cheatsheets
         direnv #load environment on entering a directory
         httpie #curl alternative
+        inotify-tools #run commands on file change
 
         #text_processing
         grex #helps generating regex

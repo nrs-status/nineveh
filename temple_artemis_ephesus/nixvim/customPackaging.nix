@@ -49,11 +49,29 @@
         foldenable = true;
       };
 
+      package 
+
       keymaps = import ./resources/keymaps.nix;
 
       plugins = import ./resources/plugins {lib = pkgs.lib;};
 
-      extraPlugins = with pkgs.vimPlugins; [vim-sexp vim-sexp-mappings-for-regular-people nvim-surround];
+      filetype = {
+        extension = {
+          pl = "prolog";
+        };
+      }; 
+
+      extraPlugins = with pkgs.vimPlugins; [
+        vim-sexp vim-sexp-mappings-for-regular-people nvim-surround
+      ] ++ [(pkgs.vimUtils.buildVimPlugin {
+    name = "nvim-agda";
+    src = pkgs.fetchFromGitHub {
+        owner = "ashinkarov";
+        repo = "nvim-agda";
+        rev = "9024909ac5cbac0a0b6f1f3f7f2b65c907c8fc12";
+        hash = "sha256-C2JWoCF2eeZFZ3J+1//FJ7FPqRE9w4CcwyEVI8vwZPw=";
+    };
+})];
 
       extraConfigLua = ''
                 -- toggle abs/relative numbers

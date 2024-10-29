@@ -12,6 +12,24 @@
   #colored brackets, parentheses, etc.
   rainbow-delimiters.enable = true;
 
+  markdown-preview = {
+    enable = true;
+    settings = {
+      auto_close = true;
+      auto_start = true;
+      browser = "firefox";
+      echo_preview_url = true;
+        page_title = "「\${name}」";
+  port = "8080";
+  preview_options = {
+    disable_filename = true;
+    disable_sync_scroll = true;
+    sync_scroll_type = "middle";
+  };
+      theme = "dark";
+    };
+  };
+
   #automatic nix indentation, filetype detection for .nix files, syntax highlighting for nix
   nix.enable = true;
 
@@ -61,6 +79,21 @@
       };
     };
   };
+
+  #lean4 lang
+  lean = {
+    enable = true;
+    leanPackage = null;
+    abbreviations = {
+      enable = true;
+      extra = {
+        osemic = "⦂"; 
+
+      };
+    };
+    mappings = true;
+  };
+
 
   #status line
   lualine.enable = true;

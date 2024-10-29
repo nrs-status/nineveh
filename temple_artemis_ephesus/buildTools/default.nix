@@ -12,6 +12,7 @@ in {
     home = {
       packages = with pkgs; [
         gnumake
+        gcc
       ];
     };
   };

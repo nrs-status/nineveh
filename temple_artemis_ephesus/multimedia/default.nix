@@ -14,7 +14,13 @@ in {
         #ebooks
         okular
         calibre
+        djview
+
+        #document transformation
         pandoc
+        mermaid-cli
+        mermaid-filter
+        texliveSmall
 
         #image  -- imagemagick, imv, and feh are all meant for the same use. they are all enabled while i try them out
         imagemagick

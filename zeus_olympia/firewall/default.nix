@@ -14,7 +14,7 @@ in {
       networkmanager.enable = true;
       firewall = {
         enable = true;
-        allowedTCPPorts = [8081];
+        allowedTCPPorts = [];
       };
     };
   };

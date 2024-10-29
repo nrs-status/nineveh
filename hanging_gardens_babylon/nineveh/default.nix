@@ -22,21 +22,27 @@
       "typescript"
       "python"
       "haskell"
-      "clojure"
+      "lean4"
+      "agda"
+      #"clojure"
 #      "racket"
+      #"scala"
+#      "curry"
+#      "prolog"
 
-      "androidDev"
+
+#      "androidDev"
       "buildTools"
 
       "gammastep"
-      "cloudwork"
+#      "cloudwork"
       "gtk"
       #"custom_packages"
       "wofi"
       "anki"
       "navi"
 
-      "ai"
+#      "ai"
     ];
   };
   nixosVars = {

@@ -94,6 +94,8 @@
 
       clojure-lsp.enable = true;
 
+      prolog-ls.enable = true;
+
       pylsp = {
         enable = true;
         settings = {

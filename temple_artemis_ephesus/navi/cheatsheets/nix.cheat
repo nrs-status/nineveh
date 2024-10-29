@@ -3,7 +3,7 @@
 # determine what is making a store path depend on another; figure out specific dependencies between store paths
 nix why-depends --precise PACKAGE DEPENDENCY 
 
-# query a store path to determine what's keeping it alive
+# query a store path to determine what's keeping it alive; cause
 nix-store --query --roots <path>
 
 # query a store path to determine its runtime dependencies
@@ -33,7 +33,7 @@ nix-env --switch-profile <profile_path>
 # run a package without keeping it alive next garbage collection
 nix run nixpkgs#PACKAGE_NAME -- ARGUMENT 
 
-# find which binaries are provided by a package; 
+# find which binaries/executables are provided by a package; 
 ls "$(nix build FLAKE#PACKAGE --print-out-paths --no-link)/bin" where FLAKE can be nixpkgs
 
 # access a previous/past/historical nixpkgs from command line; history
