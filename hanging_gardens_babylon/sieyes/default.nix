@@ -1,9 +1,12 @@
 {
-  homeVars = {
+  pkgVars = {
     pkgSets = [
       #the following configs from the temple_artemis_ephesus directory will be enabled; it uses the filename in temple_artemis_ephesus without the .nix suffix
       #"core"
       "cli"
+      "cli-minimal"
+      "cli-extended"
+      "monitoring"
       "git"
       "nixvim"
       # to fix     "doom-emacs"
@@ -15,7 +18,6 @@
       "kitty"
       "fonts"
       "etc"
-
       #programming languages
 #      "php"
       "javascript"
@@ -46,14 +48,7 @@
     ];
   };
   nixosVars = {
-    hostName = "nineveh";
-    system = "x86_64-linux";
     timeZone = "America/Argentina/Buenos_Aires";
-    mainUser = "sieyes";
-    mainUserHomeDir = "/home/sieyes";
-    vaultHost = "";
-    vaultHostPort = "";
-    vaultStorageLoc = "/home/sieyes/baghdad_plane";
 
     modulesToEnable = [
       "home-manager"

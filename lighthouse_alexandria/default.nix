@@ -20,5 +20,6 @@ let
 in
 {
   inherit recursivelyListNixFilesExceptThoseInIgnoreList;
-  inherit list_nameNImportedFilePairs;
+  dirToNameFileAttrs = dir : builtins.listToAttrs (map makeNameNImportedFilePair (lib.filesystem.listFilesRecursive dir));
+
 } // attrs_nameNImportedFile

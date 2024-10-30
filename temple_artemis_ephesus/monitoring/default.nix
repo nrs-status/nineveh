@@ -13,39 +13,6 @@ in {
   config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
-        bat-extras.batgrep
-        croc #send files between two computers
-        fd #better find
-        nix-tree
-        parallel #run commands in parallel
-        ripgrep #faster grep
-        rmlint #finds space waste and other broken things on your filesystem
-        yazi #file explorer
-        fzf #fuzzy finder
-        jq #json processor
-        trash-cli #put files in trash
-        mods #command line chatgpt
-        nix-output-monitor
-        nh #nix helper tool
-        nvd #nix diff tool
-        eza #ls alternative
-        navi #make interactive cheatsheets
-        direnv #load environment on entering a directory
-        httpie #curl alternative
-        inotify-tools #run commands on file change
-
-        #text_processing
-        grex #helps generating regex
-        choose #cut alternative
-        sd #sed alternative
-
-        #Archives
-        #currently test driving atool, previous stack is commented out
-        unzip
-        unrar
-        atool
-
-        #Monitoring
         procs #modern ps
         acpi
         duf

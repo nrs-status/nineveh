@@ -104,3 +104,6 @@ nix develop --impure
 
 # get information about a flake, such as current lockpoint/pin and current store path
 nix flake metadata flakeref 
+
+# update a single flake input
+flake lock --update-input <input>
