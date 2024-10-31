@@ -55,11 +55,11 @@
   luasnip = {
     enable = true;
     fromLua = [
-      {paths = ./snippets;}
+      {paths = ../snippets;}
     ];
     fromSnipmate = [
       {}
-      {paths = ./snippets;}
+      {paths = ../snippets;}
     ];
   };
 

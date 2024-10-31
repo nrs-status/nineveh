@@ -24,10 +24,6 @@
       json = ["fixjson"];
       yaml = ["yamlfmt"];
     };
-    formatOnSave = {
-      lspFallback = true;
-      timeoutMs = 2000;
-    };
   };
   none-ls = {
     enable = false;
@@ -93,8 +89,6 @@
       clangd.enable = true;
 
       clojure-lsp.enable = true;
-
-      prolog-ls.enable = true;
 
       pylsp = {
         enable = true;
