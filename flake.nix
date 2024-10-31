@@ -70,10 +70,6 @@
         program = pkgs.lib.getExe self.packages.hello;
       };
     };
-    homeConfigurations = helpers.makeHomeConfigs { 
-      filepath = ./pyramid_giza; 
-      inherit pkgs; 
-      home-manager-input = home-manager;
     nixosConfigurations = {
       #the following variable name must be the current host's variable name, otherwise will raise an error
       ${hostName} = nixpkgs.lib.nixosSystem {
