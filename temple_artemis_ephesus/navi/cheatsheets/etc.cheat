@@ -35,3 +35,6 @@ readlink -f <symlink_path>
 
 # shutdown/turn off computer in x minutes
 sudo shutdown -h +60
+
+# print true current directory, removing effect of symlinks
+pwd -P

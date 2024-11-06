@@ -41,9 +41,9 @@
         # {
         #   name = "zsh";
         # }
-        {
-          name = "cmdline";
-        }
+        #{ --will cause errors if enabled, use the one enabled in simplePlugins.nix
+        #  name = "cmdline";
+        #}
         # {
         #   name = "kitty";
         # }

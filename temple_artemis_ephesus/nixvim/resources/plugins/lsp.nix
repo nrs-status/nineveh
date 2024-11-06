@@ -86,6 +86,7 @@
       jsonls.enable = true;
       bashls.enable = true;
 
+
       clangd.enable = true;
 
       clojure-lsp.enable = true;

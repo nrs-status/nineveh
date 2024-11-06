@@ -30,6 +30,9 @@
     };
   };
 
+  #completion for command line stuff. enable here instead of adding a source to cmp, will otherwise cause errors
+  cmp-cmdline.enable = true;
+
   #automatic nix indentation, filetype detection for .nix files, syntax highlighting for nix
   nix.enable = true;
 
@@ -83,7 +86,6 @@
   #lean4 lang
   lean = {
     enable = true;
-    leanPackage = null;
     abbreviations = {
       enable = true;
       extra = {
@@ -92,6 +94,10 @@
       };
     };
     mappings = true;
+    lsp = {
+      enable = true;
+      cmd = ["elan" "run" "lean4" "lake" "serve"];
+    };
   };
 
 
