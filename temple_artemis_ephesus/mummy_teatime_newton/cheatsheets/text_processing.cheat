@@ -7,9 +7,12 @@ tr -d 'X'
 sed '/^[ \t]*//'
 
 # get lines 100 through 120 of a text file; extract lines between two line numbers
-cat <file> | set -n '100,120p'
+cat <file> | sed -n '100,120p'
 
-# obtain how many lines a file contains
+# get the 50 lines before the line 4849512 in a file
+head -n +4849512 filename.txt | tail -n 50
+
+# obtain how many lines a file contains; number of lines; count
 wc -l <filename>
 
 # obtain the first part of a string, the part after a given character 

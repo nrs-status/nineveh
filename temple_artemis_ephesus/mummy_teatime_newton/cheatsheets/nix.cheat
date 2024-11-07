@@ -110,3 +110,6 @@ nix flake metadata flakeref
 
 # update a single flake input
 flake lock --update-input <input>
+
+# run a command available only in a devshell as root
+sudo env PATH=$PATH <program>

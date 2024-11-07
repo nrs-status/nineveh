@@ -41,3 +41,6 @@ pwd -P
 
 # tee standard error as well as standard output; redirect standard error to standard output; output to file while printing
 some_command 2>&1 | tee fileToLogTo.log
+
+# create a file containing the numbers 1 through 100, each of them in a new line
+seq 1 100 > target.txt

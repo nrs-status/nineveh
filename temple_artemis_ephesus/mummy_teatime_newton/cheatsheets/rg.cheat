@@ -32,3 +32,6 @@ rg '(?=.*stringA)(?=.*stringB)' <filepath>
 
 # match line that contains stringA anywhere and stringB any place after stringA; both; strict
 rg 'stringA.*stringB' <filepath>
+
+# enforce including line number in result
+rg -n 'pattern' <filepath>
