@@ -96,7 +96,6 @@
     mappings = true;
     lsp = {
       enable = true;
-      cmd = ["elan" "run" "lean4" "lake" "serve"];
     };
   };
 

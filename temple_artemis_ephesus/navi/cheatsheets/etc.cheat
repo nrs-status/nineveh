@@ -38,3 +38,6 @@ sudo shutdown -h +60
 
 # print true current directory, removing effect of symlinks
 pwd -P
+
+# tee standard error as well as standard output; redirect standard error to standard output; output to file while printing
+some_command 2>&1 | tee fileToLogTo.log

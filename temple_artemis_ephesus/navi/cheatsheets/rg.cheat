@@ -26,3 +26,9 @@ rg -v "pattern" file
 
 # limit the number of columns/matched characters in the matched line; maximum characters; string length
 rg -M N_COLUMNS "pattern"
+
+# match line that contains stringA anywhere and stringB anywhere; both
+rg '(?=.*stringA)(?=.*stringB)' <filepath>
+
+# match line that contains stringA anywhere and stringB any place after stringA; both; strict
+rg 'stringA.*stringB' <filepath>

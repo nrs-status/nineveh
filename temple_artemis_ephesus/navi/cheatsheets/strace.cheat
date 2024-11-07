@@ -1,0 +1,8 @@
+% shintu, strace, diagnostics
+
+# follow children/subprocesses/forks along with the main process
+strace -f <program>
+
+# limit reports to filesystem operations
+strace -etrace=file <program>
+
