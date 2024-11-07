@@ -1,0 +1,2 @@
+create string array: arr=("1" "2" "6")
+print second element of string array: echo ${arr[1]}

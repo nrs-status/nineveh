@@ -1,0 +1,5 @@
+either 'port ' or 'ports ': "port(s)? "
+either 'word1' or 'word2': "(word1|word2)"
+end of line or string: "$"
+beginning of line or string: "^"
+end of word; word boundary: "\b", "someword\b"

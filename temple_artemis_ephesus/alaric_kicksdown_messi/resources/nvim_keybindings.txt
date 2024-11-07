@@ -1,0 +1,84 @@
+copy everything from cursor to whitespace: yw
+(conjure) evaluate entire buffer: <Leader>eb
+(conjure) open log buffer horizontally: <Leader>ls
+(conjure) open log buffer vertically: <Leader>lv
+(conjure) clear logs: <Leader>lr
+(conjure) evaluate expression directly under cursor: <Leader>ee
+(conjure) evaluate outermost expression: <Leader>er
+(conjure) evaluate form and replace it with result of evaluation: <Leader>e!
+(conjure) mark a form and evaluate it later: mf (makes f mark), then <Leader>emf
+(conjure) mark a form in one file and evaluate it in another file: mF (makes F mark), then <Leader>emF
+(conjure) show/evaluate contents of the variable under cursor: <Leader>ew
+(conjure) evaluate visual selection: <Leader>E
+(conjure) evaluate given motion: <Leader>E(motion), e.g. <Leader>Eiw
+(vim-sexp) slurp; expands form: >), <(
+(vim-sexp) barf; contract/reduce form: <), >(
+(vim-sexp) surround form with (), place cursor at front/back: <Leader>{i,I}
+(vim-sexp) surround form with [], place cursor at front/back: <Leader>{[,]}
+(vim-sexp) surround form with {}, place cursor at front/back: <Leader>{{,}}
+(vim-sexp) surround element with (), place cursor at front/back: <Leader>{w,W}
+(vim-sexp) surround element with [], place cursor at front/back: <Leader>e{[,]}
+(vim-sexp) surround element with {}, place cursor at front/back: <Leader>e{{,}}
+(vim-sexp) select current form: v{i,a}f
+(vim-sexp) select top level form: v{i,a}F
+(vim-sexp) select string: v{i,a}s
+(vim-sexp) select current element: v{i,a}e
+(vim-sexp) same-level elements next/forwards/backwards: W, B
+(vim-sexp) jump/go to previous/next top-level element: [[, ]]
+delete/replace between html tags: {d,c}ip
+delete/replace between blanklines (paragraph): {d,c}ip
+replace character and switch to insert mode: cl or s
+go to first non-blank character of the line/jump whitespace at beginning of line: ^
+see what neovim/nvim is inserting on keypress/keymap/keybinding: (insert mode)<c-v>KEYMAP
+print the lua init configuration created by nixvim: nixvim-print-init (in terminal)
+return to previous cursor position: `` or ''
+surround with parenthesis/brackes/curly, etc.: ys{motion}{char}, e.g., ysiw)
+delete surrounding: ds{char}, e.g., ds]
+change surrounding: cs{target}{replacement}, e.g., cs'"
+delete entire line: dd
+delete everything from cursor to EOL: D
+delete selection without it going to the clipboard: "_d
+(nvim-autopair) delete second pair of autopair; delete auto-inserted closing parenthesis/bracket/quote: <SPC><BS>
+replace word without it going to clipboard: "_ciw
+jump/go to EOF: G
+jump/go to start of file: gg
+jump/go to start of line: 0
+jump/go to end of line: $
+replace word: ciw
+replace within parentheses ..using delimiter: ci(
+replace within parentheses and replace parentheses themselves ..using delimiter: ca(
+replace within whitespace ..using delimiter: ciW
+replace character: r<character>
+line-wise selection; line-wise visual mode: V
+jump/go to line number n: :n
+jump/go forward a word: w
+jump/go to next brace-like character: ]}, ]), ...
+jump/go to previous brace-like character: [{, [(, ...
+jump/go to next occurence of current word: * 
+jump/go to determinate/specific line number: :number
+find and replace: :%s/old-word/new-word/g
+find and replace incrementally, asking confirmation for each match: :%s/old-word/new-word/gc
+redo: ctrl-r
+open a link to a file, supposing cursor is over hyperlink: Ctrl-]
+go back to previous position after opening a link: Ctrl-T
+custom; jump/go to end of line: L-ll
+custom; jump/go to start of line: L-hh
+custom; jump/go down once: L-jj 
+custom; jump/go/insert after curly brace or braket: L-]], L-]}, L-])
+custom; quit: L-qq
+custom; quit without saving: L-q1
+(comment.nvim) toggle current line using linewise comment: gcc
+(comment.nvim) toggle current line using blockwise comment: gbc (can use gb{motion} to customize)
+(comment.nvim) in visual mode, toggle region using linewise comments: gc
+(comment.nvim) in visual mode, toggle region using blockwise comment: gb
+fold selection: zf
+toggle fold: za
+delete folds recursively: zD
+delete top-level fold: zd
+jump/go to next/previous foldable: zj and zk
+jump/go out of/leave current fold forwards/backwards: [z and ]z
+fold/unfold by level instead of using the cursor as reference: zm and zr
+custom; recursively unfold everything in the current foldable: zO
+(Telescope) custom; live grep/search: L-lg
+(lsp) custom; hover: L-gk
+(lsp) custom; jump/go to definition: L-gd

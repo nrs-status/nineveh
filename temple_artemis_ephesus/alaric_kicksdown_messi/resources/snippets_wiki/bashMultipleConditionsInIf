@@ -1,0 +1,16 @@
+# -- DESC: bash if statement with more than one condition using logical or or logical and to compare boolean conditions
+
+
+if [[ $var1 -gt 5 && $var2 -lt 30 ]]; then                                
+	echo "blah"
+else                                                                      
+	echo "At least one of the conditions is false"                        
+fi
+
+if [[ condition1 || condition2 ]]; then                                   
+	echo "At least one condition is true."                                
+else                                                                      
+	echo "Both conditions are false."                                     
+fi
+
+

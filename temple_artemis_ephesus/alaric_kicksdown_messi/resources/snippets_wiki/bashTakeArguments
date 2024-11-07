@@ -1,0 +1,12 @@
+# -- DESC: bash example of a script that takes two arguments and echoes then; it complains/returns an error if it does not receive exactly two arguments
+
+# Check if the number of arguments is exactly 2                           
+if [ "$#" -ne 2 ]; then                                                   
+	echo "Error: You must provide exactly two arguments."                 
+	exit 1                                                                
+fi                                                                        
+# If exactly two arguments are provided, proceed with your logic (if any) 
+echo "Received two arguments: $1 and $2"                                  
+
+# Your additional logic here...                                           
+exit 0    

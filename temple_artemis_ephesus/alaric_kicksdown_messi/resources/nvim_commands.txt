@@ -1,0 +1,22 @@
+insert the result of a process call: :r !<command>
+word boundary symbols equivalent to \b in vim regex: word start: \< ; word end: \>
+list lsp clients attached to current buffer: :LspInfo or :checkhealth lsp
+find where a keymap/keybinding is being overridden: :verbose imap KEY
+(Telescope) search keymaps/keybindings: :Telescope keymaps
+record/redirect the output of a command to a file: :redir > filename.txt :COMMAND :redir END
+check the health of the nvim  installation: :checkhealth
+see what autocommand is associated with a particular autocommand event: :au autocommand_event
+call an ex command from the Lua API: vim.cmd("normal w") is the same as :normal w 
+command that takes a normal mode keypress/keybinding/keymap and executes it: :normal; e.g., :normal G
+evaluate lua: :lua; :=, :lua =<expr>
+query variable: :set <variable>? 
+delete all lines matching a pattern: :g/pattern/d
+toggle relative line numbers on/off: :set relativenumber!
+list plugins that have a proper vim help file: :help local-additions
+list keycodes: :help keycodes 
+close current buffer/return to previous buffer: :bd (which stands for buffer delete)
+run nvim with a runtime log at level 9 (level can be between 0 and 15, 15 telling you everything it is doing): nvim -V9LOGNAME.log
+run nvim in readonly mode: nvim -R
+runtime logs/errors and plugin logs: cd $USER/.local/state/nvim
+manually start the lsp: :h vim.lsp.start()
+run the contents of a lua file as a command: :luafile <path>

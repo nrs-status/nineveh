@@ -1,0 +1,28 @@
+# -- DESC: bash example of using if statements
+
+# Check if the number of arguments is exactly 2                           
+if [ "$#" -ne 2 ]; then                                                   
+	echo "Error: You must provide exactly two arguments."                 
+	exit 1                                                                
+fi                                                                        
+
+if [ "$1" == "myword" ]; then
+	echo "arg is myword"
+else
+	echo "arg is not myword"
+
+return_zero() {
+	return 0
+}
+
+return_one() {
+	return 1
+}
+
+if return_zero; then
+	echo "this will echo"
+fi
+
+if return_one; then
+	echo "this will not echo"
+fi

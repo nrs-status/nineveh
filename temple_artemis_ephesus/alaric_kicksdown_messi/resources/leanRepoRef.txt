@@ -1,0 +1,113 @@
+abbrev Term := TSyntax `term -- Init/Meta.lean
+abbrev Command := TSyntax `command -- Init/Meta.lean
+protected abbrev Level := TSyntax `level -- Init/Meta.lean
+protected abbrev Tactic := TSyntax `tactic -- Init/Meta.lean
+abbrev Prec := TSyntax `prec -- Init/Meta.lean
+abbrev Prio := TSyntax `prio -- Init/Meta.lean
+abbrev Ident := TSyntax identKind -- Init/Meta.lean
+abbrev StrLit := TSyntax strLitKind -- Init/Meta.lean
+abbrev CharLit := TSyntax charLitKind -- Init/Meta.lean
+abbrev NameLit := TSyntax nameLitKind -- Init/Meta.lean
+abbrev ScientificLit := TSyntax scientificLitKind -- Init/Meta.lean
+abbrev NumLit := TSyntax numLitKind -- Init/Meta.lean
+abbrev HygieneInfo := TSyntax hygieneInfoKind -- Init/Meta.lean
+
+3825:abbrev choiceKind : SyntaxNodeKind := `choice -- Prelude 
+3828:abbrev nullKind : SyntaxNodeKind := `null -- Prelude
+3834:abbrev groupKind : SyntaxNodeKind := `group -- Prelude
+3841:abbrev identKind : SyntaxNodeKind := `ident -- Prelude
+3844:abbrev strLitKind : SyntaxNodeKind := `str -- Prelude
+3847:abbrev charLitKind : SyntaxNodeKind := `char -- Prelude 
+3850:abbrev numLitKind : SyntaxNodeKind := `num -- Prelude
+3853:abbrev scientificLitKind : SyntaxNodeKind := `scientific -- Prelude
+3856:abbrev nameLitKind : SyntaxNodeKind := `name -- Prelude
+3859:abbrev fieldIdxKind : SyntaxNodeKind := `fieldIdx -- Prelude
+3869:abbrev hygieneInfoKind : SyntaxNodeKind := `hygieneInfo -- Prelude
+3875:abbrev interpolatedStrLitKind : SyntaxNodeKind := `interpolatedStrLitKind -- Prelude
+3880:abbrev interpolatedStrKind : SyntaxNodeKind := `interpolatedStrKind -- Prelude
+
+506:@[builtin_term_parser] def «leading_parser»  := leading_parser:leadPrec
+  "leading_parser" >> optExprPrecedence >> optional withAnonymousAntiquot >> ppSpace >> termParser -- Lean/Parser/Term.lean
+
+33:usually use the macro `leading_parser p`, which unfolds to `node k p` where the new syntax node kind `k` is [...] --   Lean/Parser/Basic.lean
+
+
+170:@[builtin_term_elab «leading_parser»] def elabLeadingParserMacro : TermElab :=
+  adaptExpander fun
+    | `(leading_parser $[: $prec?]? $[(withAnonymousAntiquot := $anon?)]? $e) =>
+        elabParserMacroAux (prec?.getD (quote Parser.maxPrec)) e (anon?.all (·.raw.isOfKind ``Parser.Term.trueVal))
+    | _ => throwUnsupportedSyntax   -- Lean/Elab/BuiltinNotation.lean
+
+1824: /-- Adapt a syntax transformation to a regular, term-producing elaborator. -/
+def adaptExpander (exp : Syntax → TermElabM Syntax) : TermElab := fun stx expectedType? => do
+  let stx' ← exp stx
+  withMacroExpansion stx stx' <| elabTerm stx' expectedType? -- Elab/Term.lean
+
+
+ private def elabParserMacroAux (prec e : Term) (withAnonymousAntiquot : Bool) : TermElabM Syntax := do
+  let (some declName) ← getDeclName?
+    | throwError "invalid `leading_parser` macro, it must be used in definitions"
+  match extractMacroScopes declName with
+  | { name := .str _ s, .. } =>
+    let kind := quote declName
+    let mut p ← ``(withAntiquot
+      (mkAntiquot $(quote s) $kind $(quote withAnonymousAntiquot))
+      (leadingNode $kind $prec $e))
+    -- cache only unparameterized parsers
+    if (← getLCtx).all (·.isAuxDecl) then
+      p ← ``(withCache $kind $p)
+    return p
+  | _  => throwError "invalid `leading_parser` macro, unexpected declaration name"
+  -- BuiltinNotation.lean 
+
+  /-- Return the name of the declaration being elaborated if available. -/
+def getDeclName? : TermElabM (Option Name) := return (← read).declName?
+-- Elab/Term.lean
+
+
+
+abbrev TermElabM := ReaderT Context $ StateRefT State MetaM
+abbrev TermElab  := Syntax → Option Expr → TermElabM Expr
+-- Elab/Term.lean; note that `Context` and `State` in the definition of TermElabM come are actually `Term.Context` and `Term.State`
+
+instance : MonadTrace CommandElabM where
+  getTraceState := return (← get).traceState
+  modifyTraceState f := modify fun s => { s with traceState := f s.traceState }
+-- Elab/Command.lean
+
+definition of #eval @ Parser/Command.lean
+implemented @ Lean/Elab/BuiltinEvalCommand.lean
+
+
+
+
+
+/--
+  Return the application `constName xs`.
+  It tries to fill the implicit arguments before the last element in `xs`.
+
+  Remark:
+  ``mkAppM `arbitrary #[α]`` returns `@arbitrary.{u} α` without synthesizing
+  the implicit argument occurring after `α`.
+  Given a `x : ([Decidable p] → Bool) × Nat`, ``mkAppM `Prod.fst #[x]`` returns `@Prod.fst ([Decidable p] → Bool) Nat x`.
+-/
+def mkAppM (constName : Name) (xs : Array Expr) : MetaM Expr := do
+  withAppBuilderTrace constName xs do withNewMCtxDepth do
+    let (f, fType) ← mkFun constName
+    mkAppMArgs f fType xs
+    -- Meta/AppBuilder.lean
+
+
+
+
+def observing? [Monad m] [MonadBacktrack s m] [MonadExcept ε m] (x : m α) : m (Option α) := do
+  let s ← saveState
+  try
+    x
+  catch _ =>
+    restoreState s
+    return none
+-- Util/MonadBacktrack.lean
+
+
+evalConst in MonadEnv uses evalConst in Environment

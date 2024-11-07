@@ -1,0 +1,4 @@
+# -- DESC: clojure import statement
+
+(require '[clojure.java.shell :as shell]) ;can refer to function in module with shell/func
+(use '[clojure.java.shell :only [sh]]) ;can call sh directly

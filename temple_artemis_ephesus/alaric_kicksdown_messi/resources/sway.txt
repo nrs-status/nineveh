@@ -1,0 +1,19 @@
+next split horizontal: Mod+Shift+backslash
+next split vertical: Mod+minus
+show/hide waybar: Mod+z
+take screenshot: Mod+p; Print
+take snippet screenshot: Mod+Print
+move window: Mod+Shift+arrows/vimkeys
+resize window: Mod+R, then arrows/vimkeys; then ESC
+send window to workspace: Mod+Shift+1/2/3...
+toggle fullscreen: Mod+f
+open launcher: Mod+d
+move window to scratchpad: Mod+Shift+minus
+open scratchpad: Mod+plus
+quit program: Mod+shift+q
+split vs. tabbed layout: Mod + E/W
+rotate layout (while in split layout): Mod + E
+horizontal vs. vertical layout: Mod + B/V
+stacked layout: Mod + s
+focus on parent container: Mod + A
+

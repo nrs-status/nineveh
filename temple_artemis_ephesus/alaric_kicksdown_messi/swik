@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+cd / #needed otherwise rg --json does not return absolute paths
+
+
+#the -c option in jq is used to print the output on a single line
+MATCHES=$(rg '\-\- DESC' --json "$SCRIPT_DIR"/resources/snippets_wiki \
+	| jq -c 'select(.type=="match") | [.data.lines.text, " -- " + .data.path.text]' \
+	| sed 's/-- DESC://g' \
+	| sed 's/-- DESC//g' \
+	| sed 's/\\n//g'\
+	| jq 'add'\
+	| tr -d '"#'\
+	| sed 's/^[ \t]*//')
+
+
+
+echo "$MATCHES" \
+	| fzf --delimiter '--' \
+	--preview "cat {2}" 

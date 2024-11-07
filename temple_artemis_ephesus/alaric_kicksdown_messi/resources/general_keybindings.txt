@@ -1,0 +1,4 @@
+Split horizontally: MOD+Shift+backslash
+Split vertically: MOD+minus
+Show scratchpad: MOD+plus
+
