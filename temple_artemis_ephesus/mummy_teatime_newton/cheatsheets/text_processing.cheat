@@ -30,5 +30,17 @@ sed -n '#p'; e.g. sed -n '7p'
 # delete all empty lines
 sed '/^$?d'
 
-#delete all lines containing a specific word from a file, editing the file in place/in-place, i.e., modifying the source/original
+# delete all lines containing a specific word from a file, editing the file in place/in-place, i.e., modifying the source/original
 sed -i '/lastModified/d' filename.txt
+
+# preserve all lines before the word 'myword', including the line containing it
+awk '/myword/{print;exit} 1' <targetfile>
+
+# preserve all lines before the word 'myword', excluding the line containing it
+awk '/myword/{exit} 1' <targetfile>
+
+# preserve all lines after the word 'myword', including the line containing it
+awk '/myword/{p=1} p' <targetfile>
+
+# preserve all lines after the word 'myword', excluding the line containing it
+awk '/myword/{p=1;next} p' <targetfile>

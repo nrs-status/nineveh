@@ -72,7 +72,37 @@
     };
 })];
 
+      # the following will bug out due to doubling { { in the resulting lua file. centralize all auto commands and refactor as needed in order to fix this. in the meantime the lean lsp will go in extraLuaConfig
+      # autoCmd = [
+      #   {
+      #     event = "FileType";
+      #     pattern = "lean";
+      #     callback = {
+      #       __raw = ''flokawoka
+      #         function(event)
+      #           vim.lsp.start({
+      #             name = 'leanls',
+      #             cmd = k{'elan', 'run', 'stable', 'lake', 'serve'},
+      #             root_dir = vim.fs.root(event.buf, k{'lakefile.toml',}),
+      #           })
+      #         end,
+      #       '';
+      #     };
+      #   }
+      # ];
+
       extraConfigLua = ''
+--        -- leanlsp setup. temporary until I have time to fix nixvim autocmd
+--        vim.api.nvim_create_autocmd('FileType', {
+--          pattern = 'lean',
+--          callback = function(event)
+--                 vim.lsp.start({
+--                   name = 'leanls',
+--                   cmd = {'elan', 'run', 'stable', 'lake', 'serve'},
+--                   root_dir = vim.fs.root(event.buf, {'lakefile.toml',}),
+--                 })
+--               end,
+--        })
                 -- toggle abs/relative numbers
                 vim.api.nvim_command('command! Abs :set relativenumber!')
                 local set= function(name) -- defines a function called 'set' that will automatically configure packages such that set "package" is equivalent to require('package').setup()

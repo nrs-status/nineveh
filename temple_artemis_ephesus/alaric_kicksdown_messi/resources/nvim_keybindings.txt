@@ -82,3 +82,4 @@ custom; recursively unfold everything in the current foldable: zO
 (Telescope) custom; live grep/search: L-lg
 (lsp) custom; hover: L-gk
 (lsp) custom; jump/go to definition: L-gd
+block insert; visual mode block insert: Ctrl-V; select region where to insert; press I; insert characters; press Esc

@@ -1,0 +1,4 @@
+% shintu, inotify, diagnostics
+
+# monitor all file creations in a directory and subdirectories
+inotifywait -mr -e create <pathtomonitor> >> <outputfilepath>

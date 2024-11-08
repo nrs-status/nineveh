@@ -1,3 +1,4 @@
+{ pkgs }:
 {
   #find-next-character motion
   hop = {
@@ -86,6 +87,7 @@
   #lean4 lang
   lean = {
     enable = true;
+    leanPackage = pkgs.elan;
     abbreviations = {
       enable = true;
       extra = {
@@ -93,10 +95,8 @@
 
       };
     };
+    lsp.enable = true;
     mappings = true;
-    lsp = {
-      enable = true;
-    };
   };
 
 

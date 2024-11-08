@@ -6,3 +6,6 @@ strace -f <program>
 # limit reports to filesystem operations
 strace -etrace=file <program>
 
+# print command names assoiated with PID
+strace -Y
+

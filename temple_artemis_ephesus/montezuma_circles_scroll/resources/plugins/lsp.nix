@@ -1,3 +1,4 @@
+{...}:
 {
   #lsp improvements and prettification
   lspsaga.enable = true;

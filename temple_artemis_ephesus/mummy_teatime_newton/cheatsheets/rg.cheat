@@ -35,3 +35,9 @@ rg 'stringA.*stringB' <filepath>
 
 # enforce including line number in result
 rg -n 'pattern' <filepath>
+
+# match all lines that contain a sequence of strings beginning with '/nix/store' and ending with '"'
+rg '\/nix\/store.*\"'
+
+# only return the match, not the whole line
+rg -o 'pattern'
