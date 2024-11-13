@@ -1,0 +1,4 @@
+# -- DESC: bash if else command on a single line
+if [ 2 -gt 1 ]; then echo true; else echo false; fi
+or:
+[ 2 -gt 1 ] && echo true || echo false

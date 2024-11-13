@@ -1,0 +1,1 @@
+package sets to be imported into the pkgs.mkShell.packages attribute in flake

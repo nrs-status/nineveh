@@ -1,0 +1,2 @@
+# -- DESC: bash command to check whether the current date is past some other date
+date -d "2010/11/10" +%s | [ $(date +%s) -gt $(cat) ] && echo "true" ||  echo "false"

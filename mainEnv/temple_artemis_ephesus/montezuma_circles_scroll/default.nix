@@ -1,11 +1,11 @@
 {
   pkgs,
-  nixvim,
+  nixvimFlakeInput,
   system,
   helpers,
   ...
-}: {
-  nixvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
+}: 
+nixvimFlakeInput.legacyPackages.${system}.makeNixvimWithModule {
     inherit pkgs;
     module = {
       globals = {
@@ -178,5 +178,4 @@
         )
       '';
     };
-  };
 }
