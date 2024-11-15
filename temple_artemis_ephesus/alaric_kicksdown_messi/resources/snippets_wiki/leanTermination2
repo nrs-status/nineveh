@@ -1,0 +1,15 @@
+# -- DESC: lean4 termination proof for any function that recurses through a tree membership relation 
+
+inductive Tree (a : Type) : Type where
+  | node : (val: a) -> List (Tree a) -> Tree a
+
+
+def isImmediateSubtree (a b : Tree α) : Prop := a ∈ b.list
+
+theorem wf : WellFounded (@isImmediateSubtree α) := ⟨acc⟩ where
+  acc : (t : Tree α) → Acc isImmediateSubtree t
+  | .node a l => .intro (.node a l) (accList l)
+  accList : (l : List (Tree α)) → ∀ a ∈ l, Acc isImmediateSubtree a
+  | a :: _, _, .head _ => acc a
+  | _ :: l, b, .tail _ h => accList l b h
+

@@ -1,0 +1,8 @@
+# -- DESC: lean4 termination example with List.attach
+
+def generate (f: List A → A): Nat → A :=
+  fun n => match n with
+  | 0 => f []
+  | p + 1 => f (List.map (fun ⟨l, h⟩ => generate f l) (List.range p).attach)
+    decreasing_by
+    exact Nat.lt_succ_of_lt (List.mem_range.mp h)
